@@ -31,7 +31,6 @@ class OneLoginConnection:
         """
         onelogin_user_ids = []
 
-        # for user in onelogin_users['user']:
         for user in onelogin_users:
             onelogin_user_ids.append(int(user['id']))
 
