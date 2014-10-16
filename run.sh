@@ -1,2 +1,4 @@
 #!/bin/bash
-python start.py
+
+MY_DIR="$(dirname "$(which "$0")")"
+python "$MY_DIR/start.py"

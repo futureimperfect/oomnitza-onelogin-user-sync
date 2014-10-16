@@ -67,21 +67,20 @@ class OomnitzaConnection:
                                                 % self.oomnitza_access_token
         for user in onelogin_users:
             try:
-                _user = onelogin_users[user]
-                if type(_user) is collections.OrderedDict:
+                if type(user) is collections.OrderedDict:
                     _users.append({
-                        "USER": _user['username'],
+                        "USER": user['username'],
                         "PASSWORD": binascii.b2a_hex(os.urandom(15)),
-                        "FIRST_NAME": _user['firstname'],
-                        "LAST_NAME": _user['lastname'],
-                        "EMAIL": _user['email'],
+                        "FIRST_NAME": user['firstname'],
+                        "LAST_NAME": user['lastname'],
+                        "EMAIL": user['email'],
                         "PERMISSIONS_ID": self.oomnitza_default_role,
                         "POSITION": self.oomnitza_default_position,
-                        "PHONE": _user['phone'],
+                        "PHONE": user['phone'],
                         "ADDRESS": ""
                     })
             except KeyError:
-                print "[x] Skipping - User Missing a Key: " + json.dumps(_user)
+                print "[x] Skipping - User Missing a Key: " + json.dumps(user)
                 continue
 
         # perform upload
